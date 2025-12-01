@@ -7,6 +7,7 @@ class Dice_cup:
         self.keep = []
 
     def roll_dice(self):
+    #make self.roll a new list of rolled dice containing self.keep
         self.roll.clear()
         for d in self.keep:
             self.roll.append(d)
@@ -14,6 +15,7 @@ class Dice_cup:
             self.roll.append(random.randint(1, 6))
 
     def keep_dice(self, keep_input):
+    #create a list of dice from last roll to keep for next roll
         self.keep.clear()
         for d in self.roll:
             if d in keep_input:
@@ -24,15 +26,19 @@ class Score_card:
     def __init__(self, num_of_games = 6):
         self.num_of_games = num_of_games
         self.current_game_num = 0
-        self.match_scores = []
-        for i in range(num_of_games):
+        self.match_scores = []  #list of lists per game containing
+                                #the individual scores per turn
+        for i in range(num_of_games):   #initialize all score fields
             self.match_scores.append([])
             for j in range(13):
                 self.match_scores[i].append(0)
-        self.match_sums = [{} for i in range(num_of_games)]
+        self.match_sums = [{} for i in range(num_of_games)] #list of dicts per game
+                                                            #containing score sums,
+                                                            #totals, and the bonus
         self.match_total = 0
 
     def add_score(self, comb_num, score, game_num):
+    #add score for a single turn to match_scores
         if comb_num < 1 or comb_num > 13:
             print("Invalid combination number...")
             return
@@ -44,6 +50,7 @@ class Score_card:
             return
         self.match_scores[game_num][comb_num - 1] = score
 
+    #functions for calculating sums, totals, bonus
     def calc_upper_sum(self, game_num):
         game_sums = self.match_sums[game_num]
         upper_section = self.match_scores[game_num][0:6]
