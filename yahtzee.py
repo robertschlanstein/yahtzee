@@ -182,3 +182,22 @@ def read_keep_dice():
         if n in valid_dice:
             keep_list.append(int(n))
     return keep_list
+
+def read_comb_score():
+    print("Choose your combination (1 - 13) and the score to enter.")
+    
+    input_string = input("Combination: ")
+    comb_string = ""
+    for n in input_string:
+        if n in "1234567890":
+            comb_string.append(n)
+    combination = int(comb_string)
+
+    input_string = input("Score: ")
+    score_string = ""
+    for n in input_string:
+        if n in "1234567890":
+            score_string.append(n)
+    score = int(score_string)
+
+    return combination, score
