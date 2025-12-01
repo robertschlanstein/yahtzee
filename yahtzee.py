@@ -75,3 +75,87 @@ class Score_card:
     def calc_game_total(self, game_num):
         game_sums = self.match_sums[game_num]
         game_sums["game_total"] = game_sums["upper_total"] + game_sums["lower_sum"]
+
+    def print_score_card(self):
+        print("Upper Section\t", end='')
+        for i in range(self.num_of_games):
+            print("    #{}".format(i + 1), end='\t')
+        print()
+        print("1. Aces\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("2. Twos\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[1]), end='\t')
+        print()
+        print("3. Threes\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[2]), end='\t')
+        print()
+        print("4. Fours\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[3]), end='\t')
+        print()
+        print("5. Fives\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[4]), end='\t')
+        print()
+        print("6. Sixes\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[5]), end='\t')
+        print()
+        print("Sum\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[5]), end='\t')
+        print()
+        print("Bonus\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[5]), end='\t')
+        print()
+        print("Upper\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[5]), end='\t')
+        print()
+        print()
+        print("Lower Section")
+        print("7. 3 of a Kind\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("8. 4 of a Kind\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("9. Full House\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("10. Sm. Straight", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("11. Lg. Straight", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("12. Yahtzee\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("13. Chance\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[0]), end='\t')
+        print()
+        print("Lower\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[5]), end='\t')
+        print()
+        print("Upper\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[5]), end='\t')
+        print()
+        print("Total\t\t", end='')
+        for game in self.match_scores:
+            print("    {}".format(game[5]), end='\t')
+        print()
