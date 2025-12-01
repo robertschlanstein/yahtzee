@@ -8,22 +8,14 @@ class Dice_cup:
 
     def roll_dice(self):
         self.roll.clear()
-        print(self.roll)
         for d in self.keep:
             self.roll.append(d)
-        print(self.roll)
         while len(self.roll) < self.num_of_dice:
             self.roll.append(random.randint(1, 6))
-        print(self.roll)
 
     def keep_dice(self, keep_input):
         self.keep.clear()
-        print(self.keep)
         for d in self.roll:
             if d in keep_input:
                 self.keep.append(d)
                 keep_input.remove(d)
-        print(self.keep)
-
-dc = Dice_cup()
-dc.roll_dice()
