@@ -22,6 +22,11 @@ class Dice_cup:
                 self.keep.append(d)
                 keep_input.remove(d)
 
+    def print_roll(self):
+        for die in self.roll:
+            print(die, end=' ')
+        print()
+
 class Score_card:
     def __init__(self, num_of_games = 6):
         self.num_of_games = num_of_games
@@ -168,3 +173,12 @@ def print_turn_num(current, total):
 
 def print_roll_num(current, total):
     print("ROLL {} of {}".format(current, total))
+
+def read_keep_dice():
+    valid_dice = "123456"
+    keep_list = []
+    keep_string = input("Which dice do you keep?\n")
+    for n in keep_string:
+        if n in valid_dice:
+            keep_list.append(int(n))
+    return keep_list
