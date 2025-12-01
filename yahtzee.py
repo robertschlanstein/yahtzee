@@ -159,3 +159,12 @@ class Score_card:
         for game in self.match_scores:
             print("    {}".format(game[5]), end='\t')
         print()
+
+def print_game_num(current, total):
+    print("GAME {} of {}".format(current, total))
+
+def print_turn_num(current, total):
+    print("TURN {} of {}".format(current, total))
+
+def print_roll_num(current, total):
+    print("ROLL {} of {}".format(current, total))
