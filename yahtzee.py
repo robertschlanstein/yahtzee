@@ -24,6 +24,8 @@ class Score_card:
     def __init__(self, num_of_games = 6):
         self.num_of_games = num_of_games
         self.match_scores = []
+        self.match_sums = []
+        self.match_total = 0
 
     def new_game(self):
         self.match_scores.append([0 for i in range(13)])
@@ -40,5 +42,17 @@ class Score_card:
             return
         self.match_scores[-1][comb_num - 1] = score
         print(self.match_scores)
+
+    def sum_upper_section():
+        pass
+
+    def sum_lower_section():
+        pass
+
+    def calc_bonus():
+        pass
+
+    def sum_total_score():
+        pass
 
 sc = Score_card()
