@@ -17,10 +17,13 @@ class Dice_cup:
         print(self.roll)
 
     def keep_dice(self, keep_input):
+        self.keep.clear()
+        print(self.keep)
         for d in self.roll:
             if d in keep_input:
                 self.keep.append(d)
                 keep_input.remove(d)
+        print(self.keep)
 
 dc = Dice_cup()
 dc.roll_dice()
