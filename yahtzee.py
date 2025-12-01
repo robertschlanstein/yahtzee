@@ -1,6 +1,7 @@
 class Dice_cup:
-    def __init__(self):
-        self.roll = [3, 3, 3, 1, 5]
+    def __init__(self, num_of_dice = 5):
+        self.num_of_dice = num_of_dice
+        self.roll = []
         self.keep = []
 
     def roll_dice(self, num):
@@ -11,7 +12,3 @@ class Dice_cup:
             if d in keep_input:
                 self.keep.append(d)
                 keep_input.remove(d)
-
-dc = Dice_cup()
-dc.keep_dice([3, 3])
-print(dc.keep)
