@@ -125,16 +125,16 @@ class Score_card:
             print("    {}".format(game[5]), end='\t')
         print()
         print("Sum\t\t", end='')
-        for game in self.match_scores:
-            print("    {}".format(game[5]), end='\t')
+        for game in self.match_sums:
+            print("    {}".format(game["upper_sum"]), end='\t')
         print()
         print("Bonus\t\t", end='')
-        for game in self.match_scores:
-            print("    {}".format(game[5]), end='\t')
+        for game in self.match_sums:
+            print("    {}".format(game["upper_bonus"]), end='\t')
         print()
         print("Upper\t\t", end='')
-        for game in self.match_scores:
-            print("    {}".format(game[5]), end='\t')
+        for game in self.match_sums:
+            print("    {}".format(game["upper_total"]), end='\t')
         print()
         print()
         print("Lower Section")
@@ -167,16 +167,16 @@ class Score_card:
             print("    {}".format(game[12]), end='\t')
         print()
         print("Lower\t\t", end='')
-        for game in self.match_scores:
-            print("    {}".format(game[5]), end='\t')
+        for game in self.match_sums:
+            print("    {}".format(game["lower_sum"]), end='\t')
         print()
         print("Upper\t\t", end='')
-        for game in self.match_scores:
-            print("    {}".format(game[5]), end='\t')
+        for game in self.match_sums:
+            print("    {}".format(game["upper_total"]), end='\t')
         print()
         print("Total\t\t", end='')
-        for game in self.match_scores:
-            print("    {}".format(game[5]), end='\t')
+        for game in self.match_sums:
+            print("    {}".format(game["game_total"]), end='\t')
         print()
 
 #game flow printing functions
@@ -242,9 +242,6 @@ def new_turn(current_game_num, current_turn_num):
     comb_num, score = read_comb_score()
     sc.add_score(comb_num, score, current_game_num)
     sc.update_match_sums(current_game_num)
-    print(sc.match_scores)
-    print(sc.match_sums)
-    input()
 
 def new_game(current_game_num):
     os.system("clear")
