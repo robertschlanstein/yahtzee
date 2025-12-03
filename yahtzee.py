@@ -23,6 +23,9 @@ class Dice_cup:
                 self.keep.append(d)
                 keep_input.remove(d)
 
+    def discard_kept_dice(self):
+        self.keep.clear()
+
     def print_roll(self):
         for die in self.roll:
             print(die, end=' ')
@@ -224,6 +227,7 @@ def new_turn(current_game_num, current_turn_num):
     print()
     print_game_num(current_game_num, num_of_total_games)
     print_turn_num(current_turn_num, 13)
+    dc.discard_kept_dice()
     for n in range(1, 4):
         new_roll(current_game_num, current_turn_num, n)
 
