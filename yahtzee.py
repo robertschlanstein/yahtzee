@@ -48,16 +48,16 @@ class Score_card:
 
     def add_score(self, comb_num, score, game_num):
     #add score for a single turn to match_scores
-        if comb_num < 1 or comb_num > 13:
+        if comb_num < 0 or comb_num > 12:
             print("Invalid combination number...")
             return
         if score < 0 or score > 50:
             print("Impossible score...")
             return
-        if self.match_scores[game_num][comb_num - 1] != 0:
+        if self.match_scores[game_num][comb_num] != 0:
             print("Combination already filled in...")
             return
-        self.match_scores[game_num][comb_num - 1] = score
+        self.match_scores[game_num][comb_num] = score
 
     #functions for calculating sums, totals, bonus
     def calc_upper_sum(self, game_num):
@@ -171,14 +171,14 @@ class Score_card:
         print()
 
 #game flow printing functions
-def print_game_num(current, total):
-    print("GAME {} of {}".format(current, total))
+def print_game_num(game_num, total_games):
+    print("GAME {} of {}".format(game_num + 1, total_games))
 
-def print_turn_num(current, total):
-    print("TURN {} of {}".format(current, total))
+def print_turn_num(turn_num, total_turns):
+    print("TURN {} of {}".format(turn_num + 1, total_turns))
 
-def print_roll_num(current, total):
-    print("ROLL {} of {}".format(current, total))
+def print_roll_num(roll_num, total_rolls):
+    print("ROLL {} of {}".format(roll_num + 1, total_rolls))
 
 #game flow reading functions
 def read_keep_dice():
@@ -198,7 +198,7 @@ def read_comb_score():
     for n in input_string:
         if n in "1234567890":
             comb_string += n
-    comb_num = int(comb_string)
+    comb_num = int(comb_string) - 1
 
     input_string = input("Score: ")
     score_string = ""
@@ -228,7 +228,7 @@ def new_turn(current_game_num, current_turn_num):
     print_game_num(current_game_num, num_of_total_games)
     print_turn_num(current_turn_num, 13)
     dc.discard_kept_dice()
-    for n in range(1, 4):
+    for n in range(3):
         new_roll(current_game_num, current_turn_num, n)
     comb_num, score = read_comb_score()
     sc.add_score(comb_num, score, current_game_num)
@@ -240,7 +240,7 @@ def new_game(current_game_num):
     sc.print_score_card()
     print()
     print_game_num(current_game_num, num_of_total_games)
-    for n in range(1, 14):
+    for n in range(13):
         new_turn(current_game_num, n)
 
 #main program
@@ -250,4 +250,4 @@ current_game_num = 0
 dc = Dice_cup()
 sc = Score_card()
 
-new_game(current_game_num + 1)
+new_game(current_game_num)
