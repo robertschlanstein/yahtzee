@@ -87,6 +87,13 @@ class Score_card:
         game_sums = self.match_sums[game_num]
         game_sums["game_total"] = game_sums["upper_total"] + game_sums["lower_sum"]
 
+    def update_match_sums(self, game_num):
+        self.calc_upper_sum(game_num)
+        self.calc_upper_bonus(game_num)
+        self.calc_upper_total(game_num)
+        self.calc_lower_sum(game_num)
+        self.calc_game_total(game_num)
+
     #printing function
     def print_score_card(self):
         print("Upper Section\t", end='')
@@ -234,6 +241,7 @@ def new_turn(current_game_num, current_turn_num):
         new_roll(current_game_num, current_turn_num, n)
     comb_num, score = read_comb_score()
     sc.add_score(comb_num, score, current_game_num)
+    sc.update_match_sums(current_game_num)
     print(sc.match_scores)
     print(sc.match_sums)
     input()
