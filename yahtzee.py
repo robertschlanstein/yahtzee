@@ -206,41 +206,40 @@ def read_comb_score():
 
     return combination, score
 
+def new_roll(current_game_num, current_turn_num, current_roll_num):
+    os.system("clear")
+    sc.print_score_card()
+    print()
+    print_game_num(current_game_num, num_of_total_games)
+    print_turn_num(current_turn_num, 13)
+    print_roll_num(current_roll_num, 3)
+    dc.roll_dice()
+    dc.print_roll()
+
+    dc.keep_dice(read_keep_dice())
+
+def new_turn(current_game_num, current_turn_num):
+    os.system("clear")
+    sc.print_score_card()
+    print()
+    print_game_num(current_game_num, num_of_total_games)
+    print_turn_num(current_turn_num, 13)
+    for n in range(1, 4):
+        new_roll(current_game_num, current_turn_num, n)
+
+def new_game(current_game_num):
+    os.system("clear")
+    sc.print_score_card()
+    print()
+    print_game_num(current_game_num, num_of_total_games)
+    for n in range(1, 14):
+        new_turn(current_game_num, n)
+
 #main program
 num_of_total_games = 6
 current_game_num = 0
-current_turn_num = 0
-current_roll_num = 0
 
 dc = Dice_cup()
 sc = Score_card()
 
-#new game
-current_game_num += 1
-current_turn_num = 1
-current_roll_num = 1
-
-os.system("clear")
-sc.print_score_card()
-print()
-print_game_num(current_game_num, num_of_total_games)
-print_turn_num(current_turn_num, 13)
-print_roll_num(current_roll_num, 3)
-dc.roll_dice()
-dc.print_roll()
-
-dc.keep_dice(read_keep_dice())
-
-#new roll
-current_roll_num += 1
-
-os.system("clear")
-sc.print_score_card()
-print()
-print_game_num(current_game_num, num_of_total_games)
-print_turn_num(current_turn_num, 13)
-print_roll_num(current_roll_num, 3)
-dc.roll_dice()
-dc.print_roll()
-
-dc.keep_dice(read_keep_dice())
+new_game(current_game_num + 1)
