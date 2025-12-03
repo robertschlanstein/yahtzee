@@ -191,23 +191,23 @@ def read_keep_dice():
     return keep_list
 
 def read_comb_score():
-    print("Choose your combination (1 - 13) and the score to enter.")
+    print("Choose your combination number (1 - 13) and the score to enter.")
     
     input_string = input("Combination: ")
     comb_string = ""
     for n in input_string:
         if n in "1234567890":
-            comb_string.append(n)
-    combination = int(comb_string)
+            comb_string += n
+    comb_num = int(comb_string)
 
     input_string = input("Score: ")
     score_string = ""
     for n in input_string:
         if n in "1234567890":
-            score_string.append(n)
+            score_string += n
     score = int(score_string)
 
-    return combination, score
+    return comb_num, score
 
 def new_roll(current_game_num, current_turn_num, current_roll_num):
     os.system("clear")
@@ -230,6 +230,10 @@ def new_turn(current_game_num, current_turn_num):
     dc.discard_kept_dice()
     for n in range(1, 4):
         new_roll(current_game_num, current_turn_num, n)
+    comb_num, score = read_comb_score()
+    print(comb_num)
+    print(score)
+    sc.add_score(comb_num, score, current_game_num)
 
 def new_game(current_game_num):
     os.system("clear")
