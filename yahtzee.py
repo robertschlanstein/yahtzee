@@ -81,6 +81,7 @@ class Score_card:
         game_sums = self.match_sums[game_num]
         game_sums["game_total"] = game_sums["upper_total"] + game_sums["lower_sum"]
 
+    #printing function
     def print_score_card(self):
         print("Upper Section\t", end='')
         for i in range(self.num_of_games):
@@ -165,6 +166,7 @@ class Score_card:
             print("    {}".format(game[5]), end='\t')
         print()
 
+#game flow printing functions
 def print_game_num(current, total):
     print("GAME {} of {}".format(current, total))
 
@@ -174,6 +176,7 @@ def print_turn_num(current, total):
 def print_roll_num(current, total):
     print("ROLL {} of {}".format(current, total))
 
+#game flow reading functions
 def read_keep_dice():
     valid_dice = "123456"
     keep_list = []
