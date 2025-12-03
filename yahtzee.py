@@ -1,3 +1,4 @@
+import os
 import random
 
 class Dice_cup:
@@ -204,3 +205,42 @@ def read_comb_score():
     score = int(score_string)
 
     return combination, score
+
+#main program
+num_of_total_games = 6
+current_game_num = 0
+current_turn_num = 0
+current_roll_num = 0
+
+dc = Dice_cup()
+sc = Score_card()
+
+#new game
+current_game_num += 1
+current_turn_num = 1
+current_roll_num = 1
+
+os.system("clear")
+sc.print_score_card()
+print()
+print_game_num(current_game_num, num_of_total_games)
+print_turn_num(current_turn_num, 13)
+print_roll_num(current_roll_num, 3)
+dc.roll_dice()
+dc.print_roll()
+
+dc.keep_dice(read_keep_dice())
+
+#new roll
+current_roll_num += 1
+
+os.system("clear")
+sc.print_score_card()
+print()
+print_game_num(current_game_num, num_of_total_games)
+print_turn_num(current_turn_num, 13)
+print_roll_num(current_roll_num, 3)
+dc.roll_dice()
+dc.print_roll()
+
+dc.keep_dice(read_keep_dice())
