@@ -37,13 +37,15 @@ class Score_card:
         self.current_game_num = 0
         self.match_scores = []  #list of lists per game containing
                                 #the individual scores per turn
-        for i in range(num_of_games):   #initialize all score fields
-            self.match_scores.append([])
-            for j in range(13):
-                self.match_scores[i].append(0)
-        self.match_sums = [{} for i in range(num_of_games)] #list of dicts per game
-                                                            #containing score sums,
-                                                            #totals, and the bonus
+        self.match_sums = []    #list of dicts per game containing
+                                #score sums, totals, and the bonus
+        for i in range(num_of_games):   #initialize match_scores and match_sums
+            self.match_scores.append([0 for score in range(13)])
+            self.match_sums.append({"upper_sum": 0,
+                                    "upper_bonus": 0,
+                                    "upper_total": 0,
+                                    "lower_sum": 0,
+                                    "game_total": 0})
         self.match_total = 0
 
     def add_score(self, comb_num, score, game_num):
@@ -233,6 +235,7 @@ def new_turn(current_game_num, current_turn_num):
     comb_num, score = read_comb_score()
     sc.add_score(comb_num, score, current_game_num)
     print(sc.match_scores)
+    print(sc.match_sums)
     input()
 
 def new_game(current_game_num):
