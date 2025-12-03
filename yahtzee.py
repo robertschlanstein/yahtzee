@@ -131,31 +131,31 @@ class Score_card:
         print("Lower Section")
         print("7. 3 of a Kind\t", end='')
         for game in self.match_scores:
-            print("    {}".format(game[0]), end='\t')
+            print("    {}".format(game[6]), end='\t')
         print()
         print("8. 4 of a Kind\t", end='')
         for game in self.match_scores:
-            print("    {}".format(game[0]), end='\t')
+            print("    {}".format(game[7]), end='\t')
         print()
         print("9. Full House\t", end='')
         for game in self.match_scores:
-            print("    {}".format(game[0]), end='\t')
+            print("    {}".format(game[8]), end='\t')
         print()
         print("10. Sm. Straight", end='')
         for game in self.match_scores:
-            print("    {}".format(game[0]), end='\t')
+            print("    {}".format(game[9]), end='\t')
         print()
         print("11. Lg. Straight", end='')
         for game in self.match_scores:
-            print("    {}".format(game[0]), end='\t')
+            print("    {}".format(game[10]), end='\t')
         print()
         print("12. Yahtzee\t", end='')
         for game in self.match_scores:
-            print("    {}".format(game[0]), end='\t')
+            print("    {}".format(game[11]), end='\t')
         print()
         print("13. Chance\t", end='')
         for game in self.match_scores:
-            print("    {}".format(game[0]), end='\t')
+            print("    {}".format(game[12]), end='\t')
         print()
         print("Lower\t\t", end='')
         for game in self.match_scores:
@@ -231,9 +231,9 @@ def new_turn(current_game_num, current_turn_num):
     for n in range(1, 4):
         new_roll(current_game_num, current_turn_num, n)
     comb_num, score = read_comb_score()
-    print(comb_num)
-    print(score)
     sc.add_score(comb_num, score, current_game_num)
+    print(sc.match_scores)
+    input()
 
 def new_game(current_game_num):
     os.system("clear")
