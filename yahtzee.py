@@ -66,10 +66,17 @@ class Score_card:
         return True
 
     #functions for calculating sums, totals, bonus
+    def sum_scores(self, score_list):
+        result = 0
+        for n in score_list:
+            if isinstance(n, int):
+                result += n
+        return result
+
     def calc_upper_sum(self, game_num):
         game_sums = self.match_sums[game_num]
         upper_section = self.match_scores[game_num][0:6]
-        game_sums["upper_sum"] = sum(upper_section)
+        game_sums["upper_sum"] = self.sum_scores(upper_section)
 
     def calc_upper_bonus(self, game_num):
         game_sums = self.match_sums[game_num]
@@ -85,7 +92,7 @@ class Score_card:
     def calc_lower_sum(self, game_num):
         game_sums = self.match_sums[game_num]
         lower_section = self.match_scores[game_num][6:13]
-        game_sums["lower_sum"] = sum(lower_section)
+        game_sums["lower_sum"] = self.sum_scores(lower_section)
 
     def calc_game_total(self, game_num):
         game_sums = self.match_sums[game_num]
