@@ -215,14 +215,15 @@ def new_game(current_game_num):
     for n in range(13):
         new_turn(current_game_num, n)
 
-#game flow
+#match constants
 games_per_match = 6
 turns_per_game = 13
 rolls_per_turn = 3
 
-current_game_num = 0
-
+#instantiate class objects
 dc = Dice_cup()
 sc = Score_card()
 
-new_game(current_game_num)
+#the match itself
+for game_num in range(games_per_match):
+    new_game(game_num)
