@@ -158,7 +158,7 @@ def print_roll(game_num, total_games, turn_num, total_turns,
     print_turn(game_num, total_games, turn_num, total_turns)
     print("ROLL {} of {}".format(roll_num + 1, total_rolls))
 
-#game flow reading functions
+#game flow input reading functions
 def read_keep_dice():
     valid_dice = "123456"
     keep_list = []
@@ -187,6 +187,7 @@ def read_comb_score():
 
     return comb_num, score
 
+#game flow execution functions
 def new_roll(current_game_num, current_turn_num, current_roll_num):
     print_roll(current_game_num, games_per_match,
                current_turn_num, turns_per_game,
@@ -214,7 +215,7 @@ def new_game(current_game_num):
     for n in range(13):
         new_turn(current_game_num, n)
 
-#main program
+#game flow
 games_per_match = 6
 turns_per_game = 13
 rolls_per_turn = 3
