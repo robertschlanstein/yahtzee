@@ -108,7 +108,7 @@ class Score_card:
         for i in range(6):
             print(comb_labels[i], end='')
             for game in self.match_scores:
-                print("    {}".format(game[0]), end='\t')
+                print("    {}".format(game[i]), end='\t')
             print()
         print("Sum\t\t", end='')
         for game in self.match_sums:
@@ -127,7 +127,7 @@ class Score_card:
         for i in range(6, 13):
             print(comb_labels[i], end='')
             for game in self.match_scores:
-                print("    {}".format(game[0]), end='\t')
+                print("    {}".format(game[i]), end='\t')
             print()
         print("Sum\t\t", end='')
         for game in self.match_sums:
