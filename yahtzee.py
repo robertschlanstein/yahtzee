@@ -25,6 +25,9 @@ class Dice_cup:
                 self.keep.append(d)
                 keep_input.remove(d)
 
+    def get_kept_dice(self):
+        return self.keep
+
     def discard_kept_dice(self):
         self.keep.clear()
 
@@ -239,6 +242,8 @@ def new_turn(current_game_num, current_turn_num):
     #execute turn
     dc.discard_kept_dice()
     for roll_num in range(rolls_per_turn):
+        if len(dc.get_kept_dice()) == dice_in_dice_cup:
+            break
         new_roll(current_game_num, current_turn_num, roll_num)
         if roll_num < rolls_per_turn - 1:
             dc.keep_dice(read_keep_dice())
@@ -258,6 +263,7 @@ def new_game(current_game_num):
         new_turn(current_game_num, turn_num)
 
 #match constants
+dice_in_dice_cup = 5
 games_per_match = 6
 turns_per_game = 13
 rolls_per_turn = 3
