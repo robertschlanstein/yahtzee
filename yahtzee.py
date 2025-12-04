@@ -170,22 +170,34 @@ def read_keep_dice():
             keep_list.append(int(n))
     return keep_list
 
-def read_comb_score():
-    print("Choose your combination number (1 - 13) and the score to enter.")
-    
+def read_comb_input():
     input_string = input("Combination: ")
     comb_string = ""
     for n in input_string:
-        if n in "1234567890":
+        if n.isdigit():
             comb_string += n
-    comb_num = int(comb_string) - 1
+    return comb_string
 
+def read_score_input():
     input_string = input("Score: ")
     score_string = ""
     for n in input_string:
-        if n in "1234567890":
+        if n.isdigit():
             score_string += n
-    score = int(score_string)
+    return score_string
+
+def read_comb_score():
+    print("Choose your combination number (1 - 13) and the score to enter.")
+    
+    comb_input = read_comb_input()
+    while comb_input == "":
+        comb_input = read_comb_input()
+    comb_num = int(comb_input) - 1
+
+    score_input = read_score_input()
+    while score_input == "":
+        score_input = read_score_input()
+    score = int(score_input)
 
     return comb_num, score
 
