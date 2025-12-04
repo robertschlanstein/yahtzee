@@ -191,30 +191,39 @@ def read_comb_score():
 
 #game flow execution functions
 def new_roll(current_game_num, current_turn_num, current_roll_num):
+    #print match info
     print_roll(current_game_num, games_per_match,
                current_turn_num, turns_per_game,
                current_roll_num, rolls_per_turn)
 
+    #execute roll
     dc.roll_dice()
     dc.print_roll()
 
+    #let user keep dice for next roll
     dc.keep_dice(read_keep_dice())
 
 def new_turn(current_game_num, current_turn_num):
+    #print match info
     print_turn(current_game_num, games_per_match,
                current_turn_num, turns_per_game)
 
+    #execute turn
     dc.discard_kept_dice()
     for roll_num in range(rolls_per_turn):
         new_roll(current_game_num, current_turn_num, roll_num)
+
+    #let user fill score into chosen combination field
     comb_num, score = read_comb_score()
     while not sc.add_score(comb_num, score, current_game_num):
         comb_num, score = read_comb_score()
     sc.update_match_sums(current_game_num)
 
 def new_game(current_game_num):
+    #print match info
     print_game(current_game_num, games_per_match)
 
+    #execute game
     for turn_num in range(turns_per_game):
         new_turn(current_game_num, turn_num)
 
