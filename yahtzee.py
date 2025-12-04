@@ -200,6 +200,7 @@ def read_score_input():
     return score_string
 
 def read_comb_score():
+    print("No more rolls for this turn.")
     print("Choose your combination number (1 - 13) and the score to enter.")
     
     #read combination field
@@ -230,9 +231,6 @@ def new_roll(current_game_num, current_turn_num, current_roll_num):
     dc.roll_dice()
     dc.print_roll()
 
-    #let user keep dice for next roll
-    dc.keep_dice(read_keep_dice())
-
 def new_turn(current_game_num, current_turn_num):
     #print match info
     print_turn(current_game_num, games_per_match,
@@ -242,6 +240,8 @@ def new_turn(current_game_num, current_turn_num):
     dc.discard_kept_dice()
     for roll_num in range(rolls_per_turn):
         new_roll(current_game_num, current_turn_num, roll_num)
+        if roll_num < rolls_per_turn - 1:
+            dc.keep_dice(read_keep_dice())
 
     #let user fill score into chosen combination field
     comb_num, score = read_comb_score()
