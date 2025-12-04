@@ -1,6 +1,8 @@
 import os
 import random
 
+cross_out_char = 'X'
+
 class Dice_cup:
     def __init__(self, num_of_dice = 5):
         self.num_of_dice = num_of_dice
@@ -53,7 +55,7 @@ class Score_card:
         if comb_num < 0 or comb_num > 12:
             print("Invalid combination number...")
             return False
-        if score < 0 or score > 50:
+        if score != cross_out_char and (score < 0 or score > 50):
             print("Impossible score...")
             return False
         if self.match_scores[game_num][comb_num] != 0:
@@ -179,8 +181,12 @@ def read_comb_input():
     return comb_string
 
 def read_score_input():
+    cross_out_input_chars = "xX"
     input_string = input("Score: ")
     score_string = ""
+    if input_string != "" and input_string[0] in cross_out_input_chars:
+        score_string = cross_out_char
+        return score_string
     for n in input_string:
         if n.isdigit():
             score_string += n
@@ -199,7 +205,10 @@ def read_comb_score():
     score_input = read_score_input()
     while score_input == "":
         score_input = read_score_input()
-    score = int(score_input)
+    if score_input == cross_out_char:
+        score = cross_out_char
+    else:
+        score = int(score_input)
 
     return comb_num, score
 
