@@ -203,8 +203,8 @@ def new_turn(current_game_num, current_turn_num):
                current_turn_num, turns_per_game)
 
     dc.discard_kept_dice()
-    for n in range(3):
-        new_roll(current_game_num, current_turn_num, n)
+    for roll_num in range(rolls_per_turn):
+        new_roll(current_game_num, current_turn_num, roll_num)
     comb_num, score = read_comb_score()
     sc.add_score(comb_num, score, current_game_num)
     sc.update_match_sums(current_game_num)
@@ -212,8 +212,8 @@ def new_turn(current_game_num, current_turn_num):
 def new_game(current_game_num):
     print_game(current_game_num, games_per_match)
 
-    for n in range(13):
-        new_turn(current_game_num, n)
+    for turn_num in range(turns_per_game):
+        new_turn(current_game_num, turn_num)
 
 #match constants
 games_per_match = 6
