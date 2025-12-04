@@ -52,14 +52,16 @@ class Score_card:
     #add score for a single turn to match_scores
         if comb_num < 0 or comb_num > 12:
             print("Invalid combination number...")
-            return
+            return False
         if score < 0 or score > 50:
             print("Impossible score...")
-            return
+            return False
         if self.match_scores[game_num][comb_num] != 0:
             print("Combination already filled in...")
-            return
+            return False
+
         self.match_scores[game_num][comb_num] = score
+        return True
 
     #functions for calculating sums, totals, bonus
     def calc_upper_sum(self, game_num):
@@ -206,7 +208,8 @@ def new_turn(current_game_num, current_turn_num):
     for roll_num in range(rolls_per_turn):
         new_roll(current_game_num, current_turn_num, roll_num)
     comb_num, score = read_comb_score()
-    sc.add_score(comb_num, score, current_game_num)
+    while not sc.add_score(comb_num, score, current_game_num):
+        comb_num, score = read_comb_score()
     sc.update_match_sums(current_game_num)
 
 def new_game(current_game_num):
