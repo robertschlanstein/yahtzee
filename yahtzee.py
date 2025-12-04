@@ -143,13 +143,19 @@ class Score_card:
         print()
 
 #game flow printing functions
-def print_game_num(game_num, total_games):
+def print_game(game_num, total_games):
+    os.system("clear")
+    sc.print_score_card()
+    print()
     print("GAME {} of {}".format(game_num + 1, total_games))
 
-def print_turn_num(turn_num, total_turns):
+def print_turn(game_num, total_games, turn_num, total_turns):
+    print_game(game_num, total_games)
     print("TURN {} of {}".format(turn_num + 1, total_turns))
 
-def print_roll_num(roll_num, total_rolls):
+def print_roll(game_num, total_games, turn_num, total_turns,
+               roll_num, total_rolls):
+    print_turn(game_num, total_games, turn_num, total_turns)
     print("ROLL {} of {}".format(roll_num + 1, total_rolls))
 
 #game flow reading functions
@@ -182,23 +188,19 @@ def read_comb_score():
     return comb_num, score
 
 def new_roll(current_game_num, current_turn_num, current_roll_num):
-    os.system("clear")
-    sc.print_score_card()
-    print()
-    print_game_num(current_game_num, num_of_total_games)
-    print_turn_num(current_turn_num, 13)
-    print_roll_num(current_roll_num, 3)
+    print_roll(current_game_num, games_per_match,
+               current_turn_num, turns_per_game,
+               current_roll_num, rolls_per_turn)
+
     dc.roll_dice()
     dc.print_roll()
 
     dc.keep_dice(read_keep_dice())
 
 def new_turn(current_game_num, current_turn_num):
-    os.system("clear")
-    sc.print_score_card()
-    print()
-    print_game_num(current_game_num, num_of_total_games)
-    print_turn_num(current_turn_num, 13)
+    print_turn(current_game_num, games_per_match,
+               current_turn_num, turns_per_game)
+
     dc.discard_kept_dice()
     for n in range(3):
         new_roll(current_game_num, current_turn_num, n)
@@ -207,15 +209,16 @@ def new_turn(current_game_num, current_turn_num):
     sc.update_match_sums(current_game_num)
 
 def new_game(current_game_num):
-    os.system("clear")
-    sc.print_score_card()
-    print()
-    print_game_num(current_game_num, num_of_total_games)
+    print_game(current_game_num, games_per_match)
+
     for n in range(13):
         new_turn(current_game_num, n)
 
 #main program
-num_of_total_games = 6
+games_per_match = 6
+turns_per_game = 13
+rolls_per_turn = 3
+
 current_game_num = 0
 
 dc = Dice_cup()
