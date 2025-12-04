@@ -189,11 +189,13 @@ def read_score_input():
 def read_comb_score():
     print("Choose your combination number (1 - 13) and the score to enter.")
     
+    #read combination field
     comb_input = read_comb_input()
     while comb_input == "":
         comb_input = read_comb_input()
     comb_num = int(comb_input) - 1
 
+    #read score to enter
     score_input = read_score_input()
     while score_input == "":
         score_input = read_score_input()
